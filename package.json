@@ -1,0 +1,16 @@
+{
+  "name": "nordvpn",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "node-fetch": "^2.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Kevin Kivi <nake89@gmail.com> (http://kevinkivi.com)",
+  "license": "ISC"
+}
