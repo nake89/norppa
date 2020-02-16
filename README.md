@@ -1,6 +1,6 @@
 # norppa
 
-Gives the closest Nordvpn server or server of your choice. The same one that this site would give: https://nordvpn.com/servers/tools
+Gives the closest P2P Nordvpn server or server of your choice. The same one that this site would give: https://nordvpn.com/servers/tools
 
 ## Installation
 
