@@ -1,16 +1,24 @@
 {
-  "name": "nordvpn",
-  "version": "1.0.0",
+  "name": "norppa",
+  "version": "1.0.1",
   "description": "",
-  "main": "index.js",
-  "dependencies": {
-    "node-fetch": "^2.3.0"
+  "main": "./main.js",
+  "bin": {
+    "norppa": "./main.js"
   },
-  "devDependencies": {},
+  "dependencies": {
+    "axios": "^0.19.2",
+    "commander": "^4.1.1",
+    "conf": "^6.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^13.7.1"
+  },
   "scripts": {
+    "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "Kevin Kivi <nake89@gmail.com> (http://kevinkivi.com)",
+  "author": "Kevin Kivi <nake89@gmail.com> (https://kevinkivi.com)",
   "license": "ISC"
 }
