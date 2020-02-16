@@ -9,6 +9,13 @@ Gives the closest P2P Nordvpn server or server of your choice. The same one that
 ## Usage
 
 ```
+$norppa
+fi101.nordvpn.com
+```
+
+### More usage
+
+```
 $ norppa --help
 Usage: norppa [options]
 

@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -39,7 +40,7 @@ var axios = require("axios").default;
 var program = require("commander");
 var Conf = require("conf");
 var config = new Conf();
-program.version("1.0.1");
+program.version("1.0.3");
 program
     .option("-i, --country-id <country-id>", "Get NordVPN server for country ID")
     .option("-s, --set-default-id <country-id>", "Set default country ID")
