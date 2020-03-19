@@ -9,7 +9,7 @@ Gives the closest P2P Nordvpn server or server of your choice. The same one that
 ## Usage
 
 ```
-$norppa
+$ norppa
 fi101.nordvpn.com
 ```
 
