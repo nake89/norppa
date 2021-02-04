@@ -16,27 +16,25 @@ program
   .option("-v, --verbose", "Verbose")
 
 program.parse(process.argv)
+const options = program.opts()
 ;(async () => {
-  if (program.setDefaultId) {
-    config.set("countryId", program.setDefaultId)
-    console.log(`Default country ID set to: ${program.setDefaultId}`)
-  } else if (program.removeDefaultId) {
+  if (options.setDefaultId) {
+    config.set("countryId", options.setDefaultId)
+    console.log(`Default country ID set to: ${options.setDefaultId}`)
+  } else if (options.removeDefaultId) {
     config.delete("countryId")
     console.log("Removed country ID. Will now get closest server instead. ")
   } else {
     try {
       let nordvpnResult
       let countryId = config.get("countryId")
-      if (program.countryId) {
-        countryId = program.countryId
-      } else {
-        if (!countryId) {
-          countryId = ""
-        }
-        nordvpnResult = await axios.get(
-          `https://nordvpn.com/wp-admin/admin-ajax.php?action=servers_recommendations&filters={%22country_id%22:${countryId},%22servers_groups%22:[15]}`
-        )
+      countryId = options.countryId
+      if (!countryId) {
+        countryId = "fi"
       }
+      let countryCodeNumber = getCountryCodeNumber(countryId)
+      let url = `https://nordvpn.com/wp-admin/admin-ajax.php?action=servers_recommendations&filters={%22country_id%22:${countryCodeNumber},%22servers_groups%22:[15]}`
+      nordvpnResult = await axios.get(url)
 
       if (nordvpnResult.data[0].hostname) {
         console.log(nordvpnResult.data[0].hostname)
@@ -44,12 +42,29 @@ program.parse(process.argv)
         console.log("Cannot get NordVPN address. Try again later. Sorry :(")
       }
     } catch (e) {
-      if (program.verbose) {
-        console.log(e)
-      }
+      console.log(e)
       console.log(
         "Connection error. Cannot get NordVPN address. Try again later. Sorry :("
       )
     }
   }
 })()
+
+function getCountryCodeNumber(countryId) {
+  switch (countryId) {
+    case "fi":
+      return 73
+    case "us":
+      return 228
+    case "se":
+      return 208
+    case "no":
+      return 163
+    case "dk":
+      return 58
+    case "uk":
+      return 227
+    default:
+      return 73
+  }
+}

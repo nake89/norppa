@@ -47,51 +47,65 @@ program
     .option("-r, --remove-default-id", "Removes default country ID. Will get closest server instead.")
     .option("-v, --verbose", "Verbose");
 program.parse(process.argv);
+var options = program.opts();
 (function () { return __awaiter(_this, void 0, void 0, function () {
-    var nordvpnResult, countryId, e_1;
+    var nordvpnResult, countryId, countryCodeNumber, url, e_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                if (!program.setDefaultId) return [3 /*break*/, 1];
-                config.set("countryId", program.setDefaultId);
-                console.log("Default country ID set to: " + program.setDefaultId);
-                return [3 /*break*/, 7];
+                if (!options.setDefaultId) return [3 /*break*/, 1];
+                config.set("countryId", options.setDefaultId);
+                console.log("Default country ID set to: " + options.setDefaultId);
+                return [3 /*break*/, 5];
             case 1:
-                if (!program.removeDefaultId) return [3 /*break*/, 2];
+                if (!options.removeDefaultId) return [3 /*break*/, 2];
                 config.delete("countryId");
                 console.log("Removed country ID. Will now get closest server instead. ");
-                return [3 /*break*/, 7];
+                return [3 /*break*/, 5];
             case 2:
-                _a.trys.push([2, 6, , 7]);
+                _a.trys.push([2, 4, , 5]);
                 nordvpnResult = void 0;
                 countryId = config.get("countryId");
-                if (!program.countryId) return [3 /*break*/, 3];
-                countryId = program.countryId;
-                return [3 /*break*/, 5];
-            case 3:
+                countryId = options.countryId;
                 if (!countryId) {
-                    countryId = "";
+                    countryId = "fi";
                 }
-                return [4 /*yield*/, axios.get("https://nordvpn.com/wp-admin/admin-ajax.php?action=servers_recommendations&filters={%22country_id%22:" + countryId + ",%22servers_groups%22:[15]}")];
-            case 4:
+                countryCodeNumber = getCountryCodeNumber(countryId);
+                url = "https://nordvpn.com/wp-admin/admin-ajax.php?action=servers_recommendations&filters={%22country_id%22:" + countryCodeNumber + ",%22servers_groups%22:[15]}";
+                return [4 /*yield*/, axios.get(url)];
+            case 3:
                 nordvpnResult = _a.sent();
-                _a.label = 5;
-            case 5:
                 if (nordvpnResult.data[0].hostname) {
                     console.log(nordvpnResult.data[0].hostname);
                 }
                 else {
                     console.log("Cannot get NordVPN address. Try again later. Sorry :(");
                 }
-                return [3 /*break*/, 7];
-            case 6:
+                return [3 /*break*/, 5];
+            case 4:
                 e_1 = _a.sent();
-                if (program.verbose) {
-                    console.log(e_1);
-                }
+                console.log(e_1);
                 console.log("Connection error. Cannot get NordVPN address. Try again later. Sorry :(");
-                return [3 /*break*/, 7];
-            case 7: return [2 /*return*/];
+                return [3 /*break*/, 5];
+            case 5: return [2 /*return*/];
         }
     });
 }); })();
+function getCountryCodeNumber(countryId) {
+    switch (countryId) {
+        case "fi":
+            return 73;
+        case "us":
+            return 228;
+        case "se":
+            return 208;
+        case "no":
+            return 163;
+        case "dk":
+            return 58;
+        case "uk":
+            return 227;
+        default:
+            return 73;
+    }
+}
