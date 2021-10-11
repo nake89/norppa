@@ -2,7 +2,20 @@
 
 Gives the closest P2P Nordvpn server or server of your choice. The same one that this site would give: https://nordvpn.com/servers/tools
 
-You can give two letter country code id. E.g. Finland would be fi and United States of America would be us. Currently only Finland, Sweden, Norway, Denmark, US and UK are supported. Please post an issue if you want your country added.
+You can give two letter country code id. E.g. Finland would be fi and United States of America would be us. Supported countries:
+
+- Denmark
+- Finland
+- Germany
+- Italy
+- Netherlands
+- Norway
+- Portugal
+- Spain
+- Sweden
+- US
+- UK
+  Please post an issue if you want your country added.
 
 ## Installation
 
