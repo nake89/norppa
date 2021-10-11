@@ -15,7 +15,8 @@ You can give two letter country code id. E.g. Finland would be fi and United Sta
 - Sweden
 - US
 - UK
-  Please post an issue if you want your country added.
+
+Please post an issue if you want your country added.
 
 ## Installation
 
