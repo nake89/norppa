@@ -64,6 +64,16 @@ function getCountryCodeNumber(countryId) {
       return 58
     case "uk":
       return 227
+    case "nl":
+      return 153
+    case "de":
+      return 81
+    case "it":
+      return 106
+    case "es":
+      return 202
+    case "pt":
+      return 175
     default:
       return 73
   }
