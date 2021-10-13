@@ -115,6 +115,22 @@ function getCountryCodeNumber(countryId) {
             return 202;
         case "pt":
             return 175;
+        case "fr":
+            return 74;
+        case "za":
+            return 200;
+        case "au":
+            return 13;
+        case "br":
+            return 30;
+        case "ca":
+            return 38;
+        case "hk":
+            return 97;
+        case "jp":
+            return 108;
+        case "tr":
+            return 220;
         default:
             return 73;
     }
