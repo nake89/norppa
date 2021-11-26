@@ -4,7 +4,7 @@ const program = require("commander")
 const Conf = require("conf")
 const config = new Conf()
 
-program.version("1.0.3")
+program.version("1.0.6")
 
 program
   .option("-i, --country-id <country-id>", "Get NordVPN server for country ID")
