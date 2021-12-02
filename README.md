@@ -34,7 +34,10 @@ Please post an issue if you want your country added.
 
 ```
 $ norppa
-fi101.nordvpn.com
+Hostname: fi148.nordvpn.com
+Name: Finland #148
+Load: 21
+Status: online
 ```
 
 ### More usage

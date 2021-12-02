@@ -18,7 +18,7 @@ const program = require("commander");
 const Conf = require("conf");
 const config = new Conf();
 const chalk_1 = __importDefault(require("chalk"));
-program.version("1.0.6");
+program.version("1.0.7");
 program
     .option("-i, --country-id <country-id>", "Get NordVPN server for country ID")
     .option("-s, --set-default-id <country-id>", "Set default country ID")
