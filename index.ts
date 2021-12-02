@@ -3,9 +3,9 @@ const axios = require("axios").default
 const program = require("commander")
 const Conf = require("conf")
 const config = new Conf()
+import chalk from "chalk"
 
-program.version("1.0.6")
-
+program.version("1.0.7")
 program
   .option("-i, --country-id <country-id>", "Get NordVPN server for country ID")
   .option("-s, --set-default-id <country-id>", "Set default country ID")
@@ -37,7 +37,12 @@ const options = program.opts()
       nordvpnResult = await axios.get(url)
 
       if (nordvpnResult.data[0].hostname) {
-        console.log(nordvpnResult.data[0].hostname)
+        let { hostname, name, load, status } = nordvpnResult
+          .data[0] as ServerData
+        console.log(`Hostname: ${chalk.blue(hostname)}`)
+        console.log(`Name: ${chalk.magenta(name)}`)
+        console.log(`Load: ${chalk.green(load)}`)
+        console.log(`Status: ${chalk.green(status)}`)
       } else {
         console.log("Cannot get NordVPN address. Try again later. Sorry :(")
       }
@@ -49,6 +54,13 @@ const options = program.opts()
     }
   }
 })()
+
+interface ServerData {
+  hostname: string
+  name: string
+  load: number
+  status: string
+}
 
 function getCountryCodeNumber(countryId) {
   switch (countryId) {
